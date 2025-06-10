@@ -12,7 +12,6 @@ import (
 	"strings"
 
 	"github.com/go-sql-driver/mysql"
-	"go.k6.io/k6/js/common"
 	"go.k6.io/k6/lib/netext"
 )
 
@@ -24,7 +23,7 @@ var supportedTLSVersions = map[string]uint16{ //nolint: gochecknoglobals
 	netext.TLS_1_3: tls.VersionTLS13,
 }
 
-// tlsExports add TLS releated exports to name dexports.
+// tlsExports add TLS related exports to name exports.
 func (mod *module) tlsExports() {
 	// TLS versions
 	mod.exports.Named["TLS_1_0"] = netext.TLS_1_0
@@ -51,17 +50,16 @@ type TLSConfig struct {
 
 // LoadTLS loads the TLS configuration for the SQL module.
 func (mod *module) LoadTLS(params map[string]interface{}) error {
-	runtime := mod.vu.Runtime()
 	var tlsConfig *TLSConfig
 	if b, err := json.Marshal(params); err != nil {
-		common.Throw(runtime, err)
+		return err
 	} else {
 		if err := json.Unmarshal(b, &tlsConfig); err != nil {
-			common.Throw(runtime, err)
+			return err
 		}
 	}
 	if _, ok := supportedTLSVersions[tlsConfig.MinVersion]; !ok {
-		common.Throw(runtime, fmt.Errorf("unsupported TLS version: %s", tlsConfig.MinVersion))
+		return fmt.Errorf("unsupported TLS version: %s", tlsConfig.MinVersion)
 	}
 	mod.tlsConfig = *tlsConfig
 

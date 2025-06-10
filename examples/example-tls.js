@@ -2,13 +2,13 @@
 // It will have to be refactored.
 
 import sql from "k6/x/sql";
-import { loadTLS, addTLS, default as driver } from "k6/x/sql/driver/mysql";
+import { loadTLS, addTLS, TLS_1_2, default as driver } from "k6/x/sql/driver/mysql";
 
-loadTLS({
+const err = loadTLS({
   enableTLS: true,
   insecureSkipTLSverify: true,
-  minVersion: driver.TLS_1_2,
-  // Possible values: sql.TLS_1_0, sql.TLS_1_1, sql.TLS_1_2, sql.TLS_1_3
+  minVersion: TLS_1_2,
+  // Possible values: TLS_1_0, TLS_1_1, TLS_1_2, TLS_1_3
   caCertFile: "ca.pem",
   clientCertFile: "client-cert.pem",
   clientKeyFile: "client-key.pem",

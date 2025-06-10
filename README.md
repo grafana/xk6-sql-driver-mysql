@@ -67,8 +67,8 @@ To enable TLS support, call `loadTLS` from the script, before calling `open`. [e
 loadTLS({
   enableTLS: true,
   insecureSkipTLSverify: true,
-  minVersion: sql.TLS_1_2,
-  // Possible values: sql.TLS_1_0, sql.TLS_1_1, sql.TLS_1_2, sql.TLS_1_3
+  minVersion: TLS_1_2,
+  // Possible values: TLS_1_0, TLS_1_1, TLS_1_2, TLS_1_3
   caCertFile: '/filepath/to/ca.pem',
   clientCertFile: '/filepath/to/client-cert.pem',
   clientKeyFile: '/filepath/to/client-key.pem',
