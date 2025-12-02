@@ -6,7 +6,7 @@ require (
 	github.com/go-sql-driver/mysql v1.9.3
 	github.com/grafana/sobek v0.0.0-20250617123252-8dce75eadcb6
 	github.com/grafana/xk6-sql v1.0.5
-	github.com/stretchr/testify v1.10.0
+	github.com/stretchr/testify v1.11.1
 	github.com/testcontainers/testcontainers-go/modules/mysql v0.37.0
 	go.k6.io/k6 v1.1.0
 )
