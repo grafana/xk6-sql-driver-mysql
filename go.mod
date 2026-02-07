@@ -2,7 +2,7 @@ module github.com/grafana/xk6-sql-driver-mysql
 
 go 1.24.0
 
-toolchain go1.25.5
+toolchain go1.25.7
 
 require (
 	github.com/go-sql-driver/mysql v1.9.3
