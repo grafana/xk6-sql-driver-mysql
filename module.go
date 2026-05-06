@@ -2,7 +2,7 @@ package mysql
 
 import (
 	"github.com/grafana/sobek"
-	"go.k6.io/k6/js/modules"
+	"go.k6.io/k6/v2/js/modules"
 )
 
 // rootModule is the global module object type.
