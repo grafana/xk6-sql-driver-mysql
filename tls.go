@@ -12,7 +12,7 @@ import (
 	"strings"
 
 	"github.com/go-sql-driver/mysql"
-	"go.k6.io/k6/lib/netext"
+	"go.k6.io/k6/v2/lib/netext"
 )
 
 // supportedTLSVersions is a map of TLS versions to their numeric values.
