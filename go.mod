@@ -7,7 +7,7 @@ toolchain go1.25.10
 require (
 	github.com/go-sql-driver/mysql v1.10.0
 	github.com/grafana/sobek v0.0.0-20260429085637-a66d4790012b
-	github.com/grafana/xk6-sql v1.1.0
+	github.com/grafana/xk6-sql v1.1.1
 	github.com/stretchr/testify v1.11.1
 	go.k6.io/k6/v2 v2.0.0-rc1
 )
