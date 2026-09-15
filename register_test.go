@@ -16,7 +16,7 @@ func TestIntegration(t *testing.T) { //nolint:paralleltest
 		t.Skip()
 	}
 
-	conn := os.Getenv("MYSQL_CONNECTION_STRING")
+	conn := os.Getenv("MYSQL_CONNECTION_STRING") //nolint:forbidigo // Integration test configuration comes from the environment.
 	if conn == "" {
 		t.Skip("MYSQL_CONNECTION_STRING is not set")
 	}
