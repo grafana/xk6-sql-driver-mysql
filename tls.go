@@ -49,21 +49,23 @@ type TLSConfig struct {
 }
 
 // LoadTLS loads the TLS configuration for the SQL module.
-func (mod *module) LoadTLS(params map[string]interface{}) error {
-	var tlsConfig *TLSConfig
-	if b, err := json.Marshal(params); err != nil {
+func (mod *module) LoadTLS(params map[string]any) error {
+	b, err := json.Marshal(params)
+	if err != nil {
 		return err
-	} else {
-		if err := json.Unmarshal(b, &tlsConfig); err != nil {
-			return err
-		}
 	}
-	if _, ok := supportedTLSVersions[tlsConfig.MinVersion]; !ok {
-		return fmt.Errorf("unsupported TLS version: %s", tlsConfig.MinVersion)
-	}
-	mod.tlsConfig = *tlsConfig
 
-	if tlsConfig.EnableTLS {
+	var config TLSConfig
+	if err := json.Unmarshal(b, &config); err != nil {
+		return err
+	}
+
+	if _, ok := supportedTLSVersions[config.MinVersion]; !ok {
+		return fmt.Errorf("unsupported TLS version: %s", config.MinVersion)
+	}
+	mod.tlsConfig = config
+
+	if config.EnableTLS {
 		if err := registerTLS(tlsConfigKey, mod.tlsConfig); err != nil {
 			return err
 		}

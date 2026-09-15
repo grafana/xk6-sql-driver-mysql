@@ -18,7 +18,7 @@ func (root *rootModule) NewModuleInstance(_ modules.VU) modules.Instance {
 	instance := &module{
 		exports: modules.Exports{
 			Default: root.driverID,
-			Named:   make(map[string]interface{}),
+			Named:   make(map[string]any),
 		},
 	}
 
@@ -29,7 +29,6 @@ func (root *rootModule) NewModuleInstance(_ modules.VU) modules.Instance {
 
 // module represents an instance of the JavaScript module for every VU.
 type module struct {
-	vu        modules.VU
 	tlsConfig TLSConfig
 	exports   modules.Exports
 }
