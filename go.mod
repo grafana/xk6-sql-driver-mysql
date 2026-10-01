@@ -3,7 +3,7 @@ module github.com/grafana/xk6-sql-driver-mysql
 go 1.26.0
 
 require (
-	github.com/go-sql-driver/mysql v1.10.0
+	github.com/go-sql-driver/mysql v1.10.1
 	github.com/grafana/sobek v0.0.0-20260908083152-4698bc773ae7
 	github.com/grafana/xk6-sql v1.2.2
 	github.com/stretchr/testify v1.12.1
